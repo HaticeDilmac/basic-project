@@ -1,18 +1,25 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <p>{{ name }}</p>
+    <button @click="clicked" ref="info">Click</button>
+    <input type="text" v-model="name">
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import { ref } from "vue";
 
 export default {
   name: 'HomeView',
-  components: {
-    HelloWorld
+  setup() {
+    let name = ref("Deneme");
+
+    const clicked = () => {
+      name.value = 'Deneme Click';
+      console.log(name.value);
+    };
+
+    return { name, clicked };
   }
 }
 </script>
